@@ -16,6 +16,7 @@
               id="name"
               name="name"
               placeholder="Enter name"
+              [(ngModel)]="product.name"
             />
           </div>
 
@@ -26,6 +27,7 @@
               placeholder="Enter description"
               id="description"
               name="description"
+              [(ngModel)]="product.description"
             ></textarea>
           </div>
 
@@ -36,17 +38,28 @@
               id="price"
               name="price"
               placeholder="Enter price"
+              [(ngModel)]="product.price"
             />
           </div>
 
           <div class="form-group form-check">
-            <input type="checkbox" id="isAvailable" name="isAvailable" class="form-check-input" />
+            <input type="checkbox"
+              id="isAvailable"
+              name="isAvailable"
+              class="form-check-input"
+              value="true"
+              [(ngModel)]="product.isAvailable"
+            />
             <label for="isAvailable" class="form-check-label">Available?</label>
           </div>
 
-          <button type="button" class="btn btn-primary">Submit</button>
+          <button type="button" class="btn btn-primary" (click)="onSubmit()">Submit</button>
         </form>
       </div>
+    </div>
+
+    <div class="alert alert-info" *ngIf="showMessage">
+      New Product saved successfully!
     </div>
   </div>
   <div class="col-md-8">

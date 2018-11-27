@@ -8,6 +8,9 @@ import { Product } from '../models/product';
   styleUrls: ['./products.component.css']
 })
 export class ProductsComponent implements OnInit {
+  showMessage = false;
+  product: Product = new Product();
+
   products: Product[] = [
     {
       id: 1,
@@ -34,12 +37,27 @@ export class ProductsComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
-  onSave(e) {
-    console.log('Save button clicked.');
-    console.log('event:', e);
+  onSubmit() {
+    this.products.unshift(this.product);
+    this.product = new Product();
+    this.showMessage = true;
+
+    console.log('onSubmit() - this:', this);
+    // const o = this;
+
+    // setTimeout(function() {
+    //   o.showMessage = false;
+    //   console.log('setTimeout callback called. showMessage reset to false');
+    //   console.log('callback() - this:', this);
+    // }, 5000);
+
+    setTimeout(() => {
+      this.showMessage = false;
+      console.log('setTimeout callback called. showMessage reset to false');
+      console.log('callback() - this:', this);
+    }, 5000);
+
   }
 }
-
