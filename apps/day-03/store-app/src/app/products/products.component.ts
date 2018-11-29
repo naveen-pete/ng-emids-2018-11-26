@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Product } from '../models/product';
+import { LoggerService } from '../services/logger.service';
+import { ProductsService } from '../services/products.service';
 
 @Component({
   selector: 'app-products',
@@ -8,36 +10,19 @@ import { Product } from '../models/product';
   styleUrls: ['./products.component.css']
 })
 export class ProductsComponent implements OnInit {
-  products: Product[] = [
-    {
-      id: 1,
-      name: 'KTM Duke',
-      price: 350000,
-      description: 'Description for KTM',
-      isAvailable: true
-    },
-    {
-      id: 2,
-      name: 'Pulsar',
-      price: 100000,
-      description: 'Description for Pulsar',
-      isAvailable: true
-    },
-    {
-      id: 3,
-      name: 'Activa',
-      price: 70000,
-      description: 'Description for Activa',
-      isAvailable: false
-    }
-  ];
+  products: Product[] = [];
 
-  constructor() {}
+  constructor(
+    private loggerService: LoggerService,
+    private productsService: ProductsService
+  ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.products = this.productsService.getProducts();
+  }
 
   onProductCreated(product: Product) {
     this.products.unshift(product);
-    console.log('Products - consuming productCreated event.');
+    this.loggerService.log('Products - consuming productCreated event.');
   }
 }
