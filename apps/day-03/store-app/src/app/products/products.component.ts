@@ -21,8 +21,8 @@ export class ProductsComponent implements OnInit {
     this.products = this.productsService.getProducts();
   }
 
-  onProductCreated(product: Product) {
-    this.products.unshift(product);
-    this.loggerService.log('Products - consuming productCreated event.');
-  }
+  // onProductCreated(product: Product) {
+  //   this.products.unshift(product);
+  //   this.loggerService.log('Products - consuming productCreated event.');
+  // }
 }

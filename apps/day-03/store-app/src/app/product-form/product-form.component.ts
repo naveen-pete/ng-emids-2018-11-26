@@ -25,8 +25,7 @@ export class ProductFormComponent implements OnInit {
   ngOnInit() {}
 
   onSubmit() {
-    // this.loggerService.log('ProductForm - Raising productCreated event.');
-    // this.productCreated.emit(this.product);
+    this.loggerService.log('ProductForm - Calling ProductsService.addProduct() method');
     this.productsService.addProduct(this.product);
     this.product = new Product();
     this.showMessage = true;

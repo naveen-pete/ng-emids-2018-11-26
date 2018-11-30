@@ -22,7 +22,7 @@ import { LoggerService } from './services/logger.service';
     BrowserModule,
     FormsModule
   ],
-  providers: [ LoggerService, ProductsService ],
+  providers: [ ProductsService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
